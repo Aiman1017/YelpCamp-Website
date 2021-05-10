@@ -1,0 +1,39 @@
+<% layout('layout/boilerplate') %>
+
+<div id="cluster-map"></div>
+
+<h1 class="mt-5 py-3">All Campgrounds</h1>
+
+<ul>
+  <% for(let campground of campgrounds) { %>
+  <div class="card mb-3 mt-2">
+    <div class="row">
+      <div class="col-md-4">
+        <% if(campground.images.length) { %>
+        <img class="img-fluid" alt="" src="<%=campground.images[0].url%>">
+        <% } else { %>
+        <img class="img-fluid" alt=""
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAflBMVEX///8AAAAwMDDo6Oj09PTPz8/w8PDq6upRUVHj4+PU1NTZ2dnt7e3Dw8Px8fHd3d0NDQ0VFRW1tbWSkpJBQUFjY2OlpaVKSkolJSXIyMiCgoKenp4gICBycnJXV1eLi4s3Nzdzc3N7e3u6urpnZ2csLCxcXFywsLBDQ0Obm5uvhin8AAAFyUlEQVR4nO2daVdiORBAZQcBm0UUWbQVW7v//x+c4TAML1ul8pJUUn3qfjV55h4e2aoS7u4EQRAEQRAEQRAEQRAEQRAEQRCqZrAed3kxXg8C/FbLDkcWK6TfbFy6qa0ZzzCCvUXpdkaw6PkFhzzf0CvLodeQ7yt6YewTXJVuYTS+7mZbuoHRbGHBQen2JQAeF99KNy8Bb6DhY+nmJeARNOQ8Fl5ZgIalW5cEMVTZnCa9mpmsvuIMX8DSdTCPMeQgaCqChbVXlKiJsYxbG86JWhjLd2vDPlELY3n56w0HYthADOtEDJuIYZ2IYZO6DCcv6+Nms/ncfd+D5ZgaPuybWyqHI7DBxNJwdOzobJ3TZI6Ga8PvzPMPe2l+hqOfVsF/ebKWZ2cIbUt/ICqAD6/B0NiVUPi01GBmeA8KWj9FrQr4+PKGfY+g7bvIy/DVa9gxelRWhpj45bNeiZNhHxW/PGm1OBlqu2YO9CAoJ0NkCFqbvzEy9I0UVz7BauC/KGyIDkGr1RgZdrGG6lKKj6F/tL+ijvp8DLFfw07nHaoH/o+yhlr8AeBVqcfHEF5VNFGnNWLYhIuhmp83ZWOI/x5+KfX4GP5AG+6UenwM8ek8aoolI8NnrOFUqcbI8AkpuFSrMTIcIQ21BEtGhphdmjMTtRYnQ9x48aXV4mSI+xCnWiVWhlpjrRh7wqwMHVGnJgejWbwM/WOi/o4acyHw8ckM+/P1+/HtG3XSSqvpDK1d0DdL78oY7q+np94RR600ZuCBgW9LDXrDXrON4SmcfeDslfVp5IY99SmW18qHa1fxp/2NoDbs/9La1SKXemr7GBd7R2lqQzN5Hs6GsTPXHZfrB1dZYkPbGzbxVzOZ7Bu96gf0daY1tEePRi2edGY6X61Wp4Hz07tAaujIo+j6D69GQGk4ch0N+51zfkRp6J6PGKHphBAamt3oDX1RlxA6Qzj89+5/QEvIDH15FDv/I9pBZeiPja1jNAAmNIbObrSBPbUwGiJDz7LuQotZOAIaw0+MYKYTjSSG6CyKNrNwHxSGAddpODKZYyAwxOwBXjmE72v4yG+IzxI5s4VXCqeP8eYpbC2S3/B3kGHnF/Col8OlTNDsILuheTTCg3sW/oYoQ2/4J1TQPQtvztxfHWXoDU/hgvaM+7uRuoWFPyuf1xCfXaBg+Z4N9GnfsQrDh7bXLhmzcMuQCt+lQ2SIzi0w0Gbh1pjTn/KGwd1oAyUC4ZjW4hYjGQ33EYLN5g+dIyrqKsR8hvg8NDvX7ga6iRIT2NECJekMW3ajiuPpfvAE5z4jLu3MZdg/xBtiMGO+VIbtu9FAvIuRTIYfVIKdpSdskckwrhsNY+vpELIY4pNdU/AIK+Yw1J6ZHfhW0hyGRN3oDeti5IqW0pjCEJlCmBIo6pHecEcndgPY10huiDsGmRx31CO1YbF7ap0LjcSG2kSeElvGV3pDX2JdVhwLjbSGUCA7P/aoR1LDIt1oA+tCI6VhoW70xsKWXjVTy8QYVnDd98GSlJvOEBPIzo6Z5p3QEH3UOivmQiOZ4YbOAsSIaKQy9J8ToEKPaCQyLN6NNtDWUmkM8WflKVAXGkkMH+haj0JZaAzVv7UzrO5HE5oLjRSGyHwgShoRjQSG9XSjDW4LjXjDVoHs/Pwf0Yg2TBCBycM1vSrWcFbvb1z9t9DQOvpgQ7IITDjbUQrDmEB2drr9eMMW+UCUdKMNYwPZ2XmONKy2G72xMXIjQwypAtlRHGMMA9MqC7HTmh1gWOFs1IqWZB5gyBQx5I8Y8kcM+SOG/BFD/oghf8SQP2LIHzHkjxjyRwz5AxrWkLgWywI0rC7logWPoCH6ipKKgc9H0x5nyoPnSGbbw+f1oP/clU7ARTOV4j0bDdz/ygL4lNuZYb25JRiWiCsoe5zHxAXqAqMZ3xf1FXu79onnm7oMuQ1usB53eTFeI64mEARBEARBEARBEARBEARBEARBKMk/S2F5tfhDoAwAAAAASUVORK5CYII=">
+        <% } %>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title"> <%= campground.title %> </h5>
+          <p class="card-text"> <%= campground.description %></p>
+          <p class="card-text">
+            <small class="text-muted"> <%= campground.location %> </small>
+          </p>
+          <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">View <%= campground.title %></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% } %>
+</ul>
+
+<script>
+  const mapToken = '<%- process.env.MAPBOX_TOKEN %>';
+  const campgrounds = { features: <%- JSON.stringify(campgrounds) %> };
+</script>
+
+<script src="javascripts/clusterMap.js"></script>
