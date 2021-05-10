@@ -131,13 +131,14 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 
-app.get('/', function (req, res) {
-  res.render('home');
-});
 
 app.use('/', usersRoutes);
 app.use('/campgrounds', campgroundsRoute);
 app.use('/campgrounds/:id/reviews', reviewsRoute);
+
+app.get('/', function (req, res) {
+  res.render('home');
+});
 
 app.all('*', function (req, res, next) {
   next(new ExpressError('Page Not Found', 404));
