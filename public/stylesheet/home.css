@@ -12,14 +12,14 @@ body{
   width: 60vw;
 }
 
-.title{
+/* .title{
   padding: 1rem 0;
-}
+} */
 
 .nav-link{
-  padding: 0 1rem;
-  font-weight: 700;
-  color: rgba(225, 225, 225, 0.5);
+  padding: 0 5rem;
+  font-weight: bold;
+  color: rgba(225, 225, 225, 1);
   margin-bottom: 1rem;
   border-bottom: 0.25rem solid black;
 }
