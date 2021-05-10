@@ -12,8 +12,12 @@ body{
   width: 60vw;
 }
 
+.title{
+  padding: 1rem 0;
+}
+
 .nav-link{
-  padding: 0.25rem 0;
+  padding: 0 1rem;
   font-weight: 700;
   color: rgba(225, 225, 225, 0.5);
   margin-bottom: 1rem;
