@@ -20,8 +20,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
 const MongoDBStore = require('connect-mongo')(session);
 
-//process.env.MONGO_DATABASE ||
-const databaseURL = 'mongodb://localhost:27017/yelp-camp';
+const databaseURL = process.env.MONGO_DATABASE || 'mongodb://localhost:27017/yelp-camp';
 
 mongoose.connect(databaseURL, {
   useNewUrlParser: true,
@@ -131,13 +130,14 @@ app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-app.use('/', usersRoutes);
-app.use('/campgrounds', campgroundsRoute);
-app.use('/campgrounds/:id/reviews', reviewsRoute);
 
 app.get('/', function (req, res) {
   res.render('home');
 });
+
+app.use('/', usersRoutes);
+app.use('/campgrounds', campgroundsRoute);
+app.use('/campgrounds/:id/reviews', reviewsRoute);
 
 app.all('*', function (req, res, next) {
   next(new ExpressError('Page Not Found', 404));
